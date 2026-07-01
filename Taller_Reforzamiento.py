@@ -2,16 +2,6 @@
 
 Productos = []; 
 
-producto = {}; 
-
-nombre = []; 
-
-stock = []; 
-
-precio = []; 
-
-disponible = []; 
-
 # Creacion de functions;
 
 def menu ():
@@ -166,33 +156,23 @@ def agregar_Producto ():
   
   disponible_Resultado = validacion_Disponibilidad(); 
   
-  # Coloca los resultados dentro de sus arrays correspondientes;
+  # Valida que todos los datos sean correctos antes de guardar;
   
-  if nombre_Resultado is not None:
+  if nombre_Resultado is None or stock_Resultado is None or precio_Resultado is None:
     
-    nombre.append(nombre_Resultado); 
+    print("\nNo se pudo agregar el producto. Revise los datos ingresados."); 
     
-  if stock_Resultado is not None:
-    
-    stock.append(stock_Resultado); 
-    
-  if precio_Resultado is not None:
-    
-    precio.append(precio_Resultado); 
-    
-  if disponible_Resultado is not None:
-    
-    disponible.append(disponible_Resultado); 
+    return; 
 
   producto = {
 
-  "Nombre": nombre,
+  "Nombre": nombre_Resultado,
 
-  "Stock": stock,
+  "Stock": stock_Resultado,
 
-  "Precio": precio,
+  "Precio": precio_Resultado,
 
-  "Disponible": disponible
+  "Disponible": disponible_Resultado
 
   }
 
@@ -220,7 +200,9 @@ def mostrar_Productos ():
 
     print("\nProductos registrados:"); 
 
-    print(Productos); 
+    for producto in Productos:
+      
+      print(producto); 
 
 # Function salir;
   
